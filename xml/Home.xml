@@ -1,0 +1,1414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">9000</defaultcontrol>
+	<onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9000&amp;group=mainmenu&amp;options=noGroups)</onload>
+	<onload>PlayerControl(Stop)</onload>
+	<onload condition="!Skin.HasSetting(SkinHelper.EnableMusicArt)">Skin.SetBool(SkinHelper.EnableMusicArt)</onload>
+	<controls>
+		<include>CommonBackground</include>
+		<include>Clock</include>
+		<!--breadcrumbs-->
+		<!--include content="DynamicLeftBreadcrumb">
+			<param name="breadcrumb1-label" value="VisionBox" />
+		</include-->
+		<!--PVR Info-->
+		<control type="group">
+			<left>795</left>
+			<top>200</top>
+			<visible>String.IsEqual(Container(9000).ListItem.Property(defaultID),livetv) + [PVR.IsRecording | PVR.HasNonRecordingTimer]</visible>
+			<control type="group">
+				<animation effect="slide" start="0,0" end="0,140" time="0" condition="PVR.IsRecording">conditional</animation>
+				<visible>PVR.HasNonRecordingTimer</visible>
+				<!--background-->
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>735</width>
+					<height>135</height>
+					<texture colordiffuse="$INFO[Skin.String(color.tertiary)]">backgrounds/white.png</texture>
+				</control>
+				<!--background strip-->
+				<control type="image">
+					<left>64r</left>
+					<top>0</top>
+					<width>4</width>
+					<height>135</height>
+					<texture colordiffuse="$INFO[Skin.String(color.500)]">backgrounds/white.png</texture>
+				</control>
+				<control type="image">
+					<left>600</left>
+					<top>8</top>
+					<width>120</width>
+					<height>120</height>
+					<aspectratio>keep</aspectratio>
+					<texture background="true" fallback="DefaultVideoCover.png">$INFO[PVR.NextRecordingChannelIcon]</texture>
+				</control>
+				<control type="image">
+					<left>548</left>
+					<top>16</top>
+					<width>38</width>
+					<height>38</height>
+					<aspectratio>keep</aspectratio>
+					<texture colordiffuse="$INFO[Skin.String(color.500)]">PVR-HasTimer.png</texture>
+				</control>
+				<control type="label">
+					<description>Next Timer Header label</description>
+					<left>15</left>
+					<top>14</top>
+					<height>38</height>
+					<width>517</width>
+					<label>$LOCALIZE[19157]</label>
+					<align>right</align>
+					<aligny>center</aligny>
+					<textcolor>$INFO[Skin.String(color.500)]</textcolor>
+				</control>
+				<control type="label">
+					<description>NextRecordingDateTime</description>
+					<left>15</left>
+					<top>53</top>
+					<height>38</height>
+					<width>570</width>
+					<label>$INFO[PVR.NextRecordingDateTime,$LOCALIZE[19126] - ]</label>
+					<align>right</align>
+					<aligny>center</aligny>
+					<scroll>true</scroll>
+				</control>
+				<control type="label">
+					<description>NextRecordingTitle Channel</description>
+					<left>15</left>
+					<top>85</top>
+					<height>38</height>
+					<width>570</width>
+					<label>$INFO[PVR.NextRecordingTitle] - [COLOR=$INFO[Skin.String(color.500)]]$INFO[PVR.NextRecordingChannel,(,)][/COLOR]</label>
+					<align>right</align>
+					<aligny>center</aligny>
+					<scroll>true</scroll>
+				</control>
+			</control>
+			<control type="group">
+				<visible>PVR.IsRecording</visible>
+				<!--background-->
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>735</width>
+					<height>135</height>
+					<texture colordiffuse="$INFO[Skin.String(color.tertiary)]">backgrounds/white.png</texture>
+				</control>
+				<!--background strip-->
+				<control type="image">
+					<left>64r</left>
+					<top>0</top>
+					<width>4</width>
+					<height>135</height>
+					<texture colordiffuse="$INFO[Skin.String(color.500)]">backgrounds/white.png</texture>
+				</control>
+				<control type="image">
+					<left>600</left>
+					<top>8</top>
+					<width>120</width>
+					<height>120</height>
+					<aspectratio>keep</aspectratio>
+					<texture background="true" fallback="DefaultVideoCover.png">$INFO[PVR.NowRecordingChannelIcon]</texture>
+				</control>
+				<control type="image">
+					<left>545</left>
+					<top>13</top>
+					<width>45</width>
+					<height>45</height>
+					<aspectratio>keep</aspectratio>
+					<texture colordiffuse="$INFO[Skin.String(color.500)]">PVR-IsRecording.png</texture>
+				</control>
+				<control type="label">
+					<description>Is Recording Header label</description>
+					<left>15</left>
+					<top>14</top>
+					<height>38</height>
+					<width>517</width>
+					<label>$LOCALIZE[19158]</label>
+					<align>right</align>
+					<aligny>center</aligny>
+					<textcolor>$INFO[Skin.String(color.500)]</textcolor>
+				</control>
+				<control type="label">
+					<description>NextRecordingDateTime</description>
+					<left>15</left>
+					<top>53</top>
+					<height>38</height>
+					<width>570</width>
+					<label>$INFO[PVR.NowRecordingDateTime,$LOCALIZE[19126] - ]</label>
+					<align>right</align>
+					<aligny>center</aligny>
+					<scroll>true</scroll>
+				</control>
+				<control type="label">
+					<description>NextRecordingTitle Channel</description>
+					<left>15</left>
+					<top>85</top>
+					<height>38</height>
+					<width>570</width>
+					<label>$INFO[PVR.NowRecordingTitle] - [COLOR=$INFO[Skin.String(color.500)]]$INFO[PVR.NowRecordingChannel,(,)][/COLOR]</label>
+					<align>right</align>
+					<aligny>center</aligny>
+					<scroll>true</scroll>
+				</control>
+			</control>
+		</control>
+		<control type="group">
+			<width>1920</width>
+			<centerleft>50%</centerleft>
+			<control type="group" id="9007">
+				<onleft>9000</onleft>
+				<onright>9000</onright>
+				<onup>915</onup>
+				<ondown condition="System.HasAddon(script.globalsearch)">608</ondown>
+				<ondown condition="!System.HasAddon(script.globalsearch)">603</ondown>
+				<!--Home Screen Widgets-->
+				<include>skinshortcuts-template-widget</include>
+			</control>
+			<control type="group">
+				<left>0</left>
+				<top>37%</top>
+				<!--Now playing music Info-->
+				<control type="group">
+					<visible>Player.HasAudio + !Skin.HasSetting(homepageMusicinfo) + String.IsEmpty(Window(Videos).Property(PlayingBackgroundMedia))</visible>
+					<!--cover-->
+					<control type="image">
+						<left>55</left>
+						<top>80</top>
+						<width>181</width>
+						<height>181</height>
+						<aspectratio aligny="bottom">stretch</aspectratio>
+						<bordersize>5</bordersize>
+						<bordertexture colordiffuse="$INFO[Skin.String(color.500)]">backgrounds/square shadow small.png</bordertexture>
+						<texture fallback="DefaultAlbumCover.png">$INFO[Player.Art(thumb)]</texture>
+					</control>
+					<!--labels-->
+					<control type="group">
+						<!--title-->
+						<control type="label">
+							<left>240</left>
+							<top>132</top>
+							<height>45</height>
+							<width>825</width>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>button.nf</shadowcolor>
+							<label>$INFO[Player.Title]</label>
+						</control>
+						<!--artist-->
+						<control type="label">
+							<description>Album Label</description>
+							<left>240</left>
+							<top>171</top>
+							<height>38</height>
+							<width>825</width>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb.secondary</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>button.nf</shadowcolor>
+							<label>$INFO[MusicPlayer.Artist]</label>
+						</control>
+						<!--album-->
+						<control type="label">
+							<description>Album Label</description>
+							<left>240</left>
+							<top>197</top>
+							<height>38</height>
+							<width>825</width>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb.secondary</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>button.nf</shadowcolor>
+							<label>$INFO[MusicPlayer.Album]$INFO[musicplayer.discnumber, - $LOCALIZE[427]: ]</label>
+						</control>
+						<!--time-->
+						<control type="label">
+							<left>240</left>
+							<top>223</top>
+							<height>45</height>
+							<width>450</width>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb.secondary</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>button.nf</shadowcolor>
+							<label>$INFO[Player.Time] / $INFO[Player.Duration,]</label>
+						</control>
+					</control>
+				</control>
+				<!--Now playing video Info -->
+				<control type="group">
+					<visible>Player.HasVideo + !Skin.HasSetting(homepageVideoinfo) + String.IsEmpty(Window(Videos).Property(PlayingBackgroundMedia))</visible>
+					<!--videos-->
+					<control type="group">
+						<visible>!VideoPlayer.Content(Movies) + !VideoPlayer.Content(Episodes) + !VideoPlayer.Content(LiveTV)</visible>
+						<!--title-->
+						<control type="label">
+							<left>60</left>
+							<top>187</top>
+							<height>45</height>
+							<width>1500</width>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>button.nf</shadowcolor>
+							<label>$INFO[Player.Title]</label>
+						</control>
+						<!--time-->
+						<control type="label">
+							<left>60</left>
+							<top>223</top>
+							<height>45</height>
+							<width>450</width>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb.secondary</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>button.nf</shadowcolor>
+							<label>$INFO[Player.Time] / $INFO[Player.Duration,]</label>
+						</control>
+					</control>
+					<!--live tv-->
+					<control type="group">
+						<visible>VideoPlayer.Content(LiveTV)</visible>
+						<!--thumb-->
+						<control type="image">
+							<left>64</left>
+							<top>168</top>
+							<width>256</width>
+							<height>90</height>
+							<aspectratio>keep</aspectratio>
+							<texture fallback="DefaultVideoCover.png">$INFO[Player.Art(thumb)]</texture>
+						</control>
+						<!--title-->
+						<control type="label">
+							<left>330</left>
+							<top>158</top>
+							<height>45</height>
+							<width>1500</width>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>button.nf</shadowcolor>
+							<label>$INFO[Player.Title]</label>
+						</control>
+						<!--channel-->
+						<control type="label">
+							<left>330</left>
+							<top>197</top>
+							<height>38</height>
+							<width>825</width>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb.secondary</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>button.nf</shadowcolor>
+							<label>$INFO[VideoPlayer.ChannelName]</label>
+						</control>
+						<!--time-->
+						<control type="label">
+							<left>330</left>
+							<top>223</top>
+							<height>45</height>
+							<width>450</width>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb.secondary</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>button.nf</shadowcolor>
+							<label>$INFO[Player.Time] / $INFO[Player.Duration,]</label>
+						</control>
+					</control>
+					<!--movies-->
+					<control type="group">
+						<visible>VideoPlayer.Content(Movies)</visible>
+						<control type="image">
+							<left>55</left>
+							<top>0</top>
+							<width>175</width>
+							<height>263</height>
+							<aspectratio aligny="bottom">stretch</aspectratio>
+							<bordertexture>backgrounds/poster shadow small.png</bordertexture>
+							<bordersize>5</bordersize>
+							<texture fallback="DefaultVideoCover.png">$INFO[Player.Art(thumb)]</texture>
+						</control>
+						<!--title-->
+						<control type="label">
+							<left>233</left>
+							<top>158</top>
+							<height>45</height>
+							<width>1500</width>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>button.nf</shadowcolor>
+							<label>$INFO[Player.Title]</label>
+						</control>
+						<!--studio-->
+						<control type="label">
+							<left>233</left>
+							<top>197</top>
+							<height>38</height>
+							<width>825</width>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb.secondary</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>button.nf</shadowcolor>
+							<label>$INFO[VideoPlayer.Studio]</label>
+						</control>
+						<!--time-->
+						<control type="label">
+							<left>233</left>
+							<top>223</top>
+							<height>45</height>
+							<width>450</width>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb.secondary</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>button.nf</shadowcolor>
+							<label>$INFO[Player.Time] / $INFO[Player.Duration,]</label>
+						</control>
+					</control>
+					<!--episodes-->
+					<control type="group">
+						<visible>VideoPlayer.Content(Episodes)</visible>
+						<!--thumb-->
+						<control type="image">
+							<left>55</left>
+							<top>81</top>
+							<width>270</width>
+							<height>180</height>
+							<aspectratio>scale</aspectratio>
+							<texture fallback="DefaultVideoCover.png">$INFO[Player.Art(thumb)]</texture>
+							<bordertexture>backgrounds/episode shadow small.png</bordertexture>
+							<bordersize>5</bordersize>
+						</control>
+						<!--title-->
+						<control type="label">
+							<left>330</left>
+							<top>158</top>
+							<height>45</height>
+							<width>1500</width>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>button.nf</shadowcolor>
+							<label>$INFO[Player.Title]</label>
+						</control>
+						<!--episode-->
+						<control type="label">
+							<left>330</left>
+							<top>197</top>
+							<height>38</height>
+							<width>825</width>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb.secondary</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>button.nf</shadowcolor>
+							<label>$INFO[VideoPlayer.TVShowTitle] ($INFO[VideoPlayer.Season,$LOCALIZE[20373] , - ]$INFO[VideoPlayer.episode,$LOCALIZE[20359] ,])</label>
+						</control>
+						<!--time-->
+						<control type="label">
+							<left>330</left>
+							<top>223</top>
+							<height>45</height>
+							<width>450</width>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb.secondary</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>button.nf</shadowcolor>
+							<label>$INFO[Player.Time] / $INFO[Player.Duration,]</label>
+						</control>
+					</control>
+				</control>
+				<!--now playing controls-->
+				<control type="group">
+					<left>900r</left>
+					<top>213</top>
+					<visible>String.IsEmpty(Window(Videos).Property(PlayingBackgroundMedia))</visible>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="zoom" start="80" end="100" center="960,540" easing="out" tween="back" time="300" />
+						<effect type="fade" start="0" end="100" time="300" />
+					</animation>
+					<animation type="WindowClose" reversible="false">
+						<effect type="zoom" start="100" end="80" center="960,540" easing="in" tween="back" time="300" />
+						<effect type="fade" start="100" end="0" time="300" />
+					</animation>
+					<!--search-->
+					<control type="group">
+						<visible>System.HasAddon(script.globalsearch)</visible>
+						<!--search background-->
+						<control type="image">
+							<left>60</left>
+							<top>0</top>
+							<width>776</width>
+							<height>45</height>
+							<texture colordiffuse="$INFO[Skin.String(color.tertiary)]">backgrounds/white.png</texture>
+							<animation effect="zoom" start="60,0,776,45" end="608,0,228,45" time="500" condition="!Player.HasMedia">conditional</animation>
+						</control>
+						<!--background strip-->
+						<control type="image">
+							<left>64r</left>
+							<top>0</top>
+							<width>4</width>
+							<height>45</height>
+							<texture colordiffuse="$INFO[Skin.String(color.500)]">backgrounds/white.png</texture>
+						</control>
+						<!--global search button-->
+						<control type="radiobutton" id="608">
+							<colordiffuse>$INFO[Skin.String(color.tertiary)]</colordiffuse>
+							<left>65</left>
+							<top>5</top>
+							<height>35</height>
+							<width>218</width>
+							<textwidth>225</textwidth>
+							<textoffsetx>10</textoffsetx>
+							<textoffsety>3</textoffsety>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb.tertiary</font>
+							<textcolor>$INFO[Skin.String(color.text)]</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus colordiffuse="$INFO[Skin.String(color.500)]">backgrounds/white.png</texturefocus>
+							<texturenofocus colordiffuse="$INFO[Skin.String(color.border)]">button-border-search.png</texturenofocus>
+							<pulseonselect>false</pulseonselect>
+							<label>137</label>
+							<onclick>RunScript(script.globalsearch)</onclick>
+							<textureradioonfocus colordiffuse="white">icon_search.png</textureradioonfocus>
+							<textureradioonnofocus colordiffuse="$INFO[Skin.String(color.text)]">icon_search.png</textureradioonnofocus>
+							<textureradioofffocus colordiffuse="white">icon_search.png</textureradioofffocus>
+							<textureradiooffnofocus colordiffuse="$INFO[Skin.String(color.text)]">icon_search.png</textureradiooffnofocus>
+							<onleft>607</onleft>
+							<onright>601</onright>
+							<onup>9007</onup>
+							<ondown>9000</ondown>
+							<radiowidth>24</radiowidth>
+							<radioheight>24</radioheight>
+							<radioposx>188</radioposx>
+							<animation effect="slide" start="0,0" end="548,0" time="500" condition="!Player.HasMedia">conditional</animation>
+						</control>
+					</control>
+					<!--now playing items-->
+					<control type="group">
+						<animation effect="fade" start="0" end="100" time="0" delay="500">Visible</animation>
+						<animation effect="fade" start="100" end="0" time="0">Hidden</animation>
+						<visible>Player.HasMedia</visible>
+						<!--media controls-->
+						<control type="group" id="600">
+							<left>303</left>
+							<onup>9007</onup>
+							<ondown>9000</ondown>
+							<defaultcontrol></defaultcontrol>
+							<enable>Player.HasMedia</enable>
+							<!--background-->
+							<control type="image">
+								<left>-15</left>
+								<top>0</top>
+								<width>308</width>
+								<height>45</height>
+								<texture colordiffuse="$INFO[Skin.String(color.tertiary)]">backgrounds/white.png</texture>
+							</control>
+							<!--background strip-->
+							<control type="image">
+								<left>64r</left>
+								<top>0</top>
+								<width>4</width>
+								<height>45</height>
+								<texture colordiffuse="$INFO[Skin.String(color.500)]">backgrounds/white.png</texture>
+								<visible>!System.HasAddon(script.globalsearch)</visible>
+							</control>
+							<control type="group">
+								<visible>!VideoPlayer.Content(LiveTV)</visible>
+								<top>-5</top>
+								<left>-5</left>
+								<control type="button" id="601">
+									<left>15</left>
+									<top>15</top>
+									<width>25</width>
+									<height>25</height>
+									<label></label>
+									<texturefocus colordiffuse="$INFO[Skin.String(color.500)]">OSDPrevTrackNF.png</texturefocus>
+									<texturenofocus colordiffuse="$INFO[Skin.String(color.text)]">OSDPrevTrackNF.png</texturenofocus>
+									<onleft>608</onleft>
+									<onright>602</onright>
+									<onup>9007</onup>
+									<ondown>9000</ondown>
+									<onclick>XBMC.PlayerControl(Previous)</onclick>
+								</control>
+								<control type="button" id="602">
+									<left>60</left>
+									<top>15</top>
+									<width>25</width>
+									<height>25</height>
+									<label></label>
+									<texturefocus colordiffuse="$INFO[Skin.String(color.500)]">OSDRewindNF.png</texturefocus>
+									<texturenofocus colordiffuse="$INFO[Skin.String(color.text)]">OSDRewindNF.png</texturenofocus>
+									<onleft>601</onleft>
+									<onright>603</onright>
+									<onup>9007</onup>
+									<ondown>9000</ondown>
+									<onclick>XBMC.PlayerControl(Rewind)</onclick>
+								</control>
+								<control type="togglebutton" id="603">
+									<left>105</left>
+									<top>15</top>
+									<width>25</width>
+									<height>25</height>
+									<label></label>
+									<texturefocus colordiffuse="$INFO[Skin.String(color.500)]">OSDPauseNF.png</texturefocus>
+									<texturenofocus colordiffuse="$INFO[Skin.String(color.text)]">OSDPauseNF.png</texturenofocus>
+									<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
+									<alttexturefocus colordiffuse="$INFO[Skin.String(color.500)]">OSDPlayNF.png</alttexturefocus>
+									<alttexturenofocus colordiffuse="$INFO[Skin.String(color.text)]">OSDPlayNF.png</alttexturenofocus>
+									<onleft>602</onleft>
+									<onright>604</onright>
+									<onup>9007</onup>
+									<ondown>9000</ondown>
+									<onclick>XBMC.PlayerControl(Play)</onclick>
+								</control>
+								<control type="button" id="604">
+									<left>150</left>
+									<top>15</top>
+									<width>25</width>
+									<height>25</height>
+									<label></label>
+									<texturefocus colordiffuse="$INFO[Skin.String(color.500)]">OSDStopNF.png</texturefocus>
+									<texturenofocus colordiffuse="$INFO[Skin.String(color.text)]">OSDStopNF.png</texturenofocus>
+									<onleft>603</onleft>
+									<onright>605</onright>
+									<onup>9007</onup>
+									<ondown>9000</ondown>
+									<onclick>down</onclick>
+									<onclick>XBMC.PlayerControl(Stop)</onclick>
+								</control>
+								<control type="button" id="605">
+									<left>195</left>
+									<top>15</top>
+									<width>25</width>
+									<height>25</height>
+									<label></label>
+									<texturefocus colordiffuse="$INFO[Skin.String(color.500)]">OSDForwardNF.png</texturefocus>
+									<texturenofocus colordiffuse="$INFO[Skin.String(color.text)]">OSDForwardNF.png</texturenofocus>
+									<onleft>604</onleft>
+									<onright>606</onright>
+									<onup>9007</onup>
+									<ondown>9000</ondown>
+									<onclick>XBMC.PlayerControl(Forward)</onclick>
+								</control>
+								<control type="button" id="606">
+									<left>240</left>
+									<top>15</top>
+									<width>25</width>
+									<height>25</height>
+									<label></label>
+									<texturefocus colordiffuse="$INFO[Skin.String(color.500)]">OSDNextTrackNF.png</texturefocus>
+									<texturenofocus colordiffuse="$INFO[Skin.String(color.text)]">OSDNextTrackNF.png</texturenofocus>
+									<onleft>605</onleft>
+									<onright>607</onright>
+									<onup>9007</onup>
+									<ondown>9000</ondown>
+									<onclick>XBMC.PlayerControl(Next)</onclick>
+								</control>
+							</control>
+							<control type="group" id="600">
+								<visible>VideoPlayer.Content(LiveTV)</visible>
+								<top>-5</top>
+								<left>-5</left>
+								<control type="button" id="601">
+									<left>15</left>
+									<top>15</top>
+									<width>25</width>
+									<height>25</height>
+									<label></label>
+									<texturefocus colordiffuse="$INFO[Skin.String(color.500)]">OSDChannelUPNF.png</texturefocus>
+									<texturenofocus colordiffuse="$INFO[Skin.String(color.text)]">OSDChannelUPNF.png</texturenofocus>
+									<onleft>608</onleft>
+									<onright>602</onright>
+									<onup>9007</onup>
+									<ondown>9000</ondown>
+									<onclick>ChannelDown</onclick>
+								</control>
+								<control type="button" id="602">
+									<left>60</left>
+									<top>15</top>
+									<width>25</width>
+									<height>25</height>
+									<label></label>
+									<texturefocus colordiffuse="$INFO[Skin.String(color.500)]">OSDChannelDownNF.png</texturefocus>
+									<texturenofocus colordiffuse="$INFO[Skin.String(color.text)]">OSDChannelDownNF.png</texturenofocus>
+									<onleft>601</onleft>
+									<onright>603</onright>
+									<onup>9007</onup>
+									<ondown>9000</ondown>
+									<onclick>ChannelUp</onclick>
+								</control>
+								<control type="button" id="603">
+									<left>105</left>
+									<top>15</top>
+									<width>25</width>
+									<height>25</height>
+									<label></label>
+									<texturefocus colordiffuse="$INFO[Skin.String(color.500)]">OSDStopNF.png</texturefocus>
+									<texturenofocus colordiffuse="$INFO[Skin.String(color.text)]">OSDStopNF.png</texturenofocus>
+									<onleft>602</onleft>
+									<onright>604</onright>
+									<onup>9007</onup>
+									<ondown>9000</ondown>
+									<onclick>down</onclick>
+									<onclick>XBMC.PlayerControl(Stop)</onclick>
+								</control>
+								<control type="togglebutton" id="604">
+									<left>150</left>
+									<top>15</top>
+									<width>25</width>
+									<height>25</height>
+									<label></label>
+									<texturefocus colordiffuse="$INFO[Skin.String(color.500)]">OSDPauseNF.png</texturefocus>
+									<texturenofocus colordiffuse="$INFO[Skin.String(color.text)]">OSDPauseNF.png</texturenofocus>
+									<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
+									<alttexturefocus colordiffuse="$INFO[Skin.String(color.500)]">OSDPlayNF.png</alttexturefocus>
+									<alttexturenofocus colordiffuse="$INFO[Skin.String(color.text)]">OSDPlayNF.png</alttexturenofocus>
+									<onleft>603</onleft>
+									<onright>606</onright>
+									<onup>9007</onup>
+									<ondown>9000</ondown>
+									<onclick>XBMC.PlayerControl(Play)</onclick>
+									<enable>Player.PauseEnabled</enable>
+									<animation effect="fade" start="100" end="30" time="100" condition="!Player.PauseEnabled">Conditional</animation>
+								</control>
+								<control type="button" id="606">
+									<left>240</left>
+									<top>15</top>
+									<width>25</width>
+									<height>25</height>
+									<label></label>
+									<texturefocus colordiffuse="$INFO[Skin.String(color.500)]">OSDRecordOffNF.png</texturefocus>
+									<texturenofocus colordiffuse="$INFO[Skin.String(color.text)]">OSDRecordOffNF.png</texturenofocus>
+									<onleft>604</onleft>
+									<onright>607</onright>
+									<onup>9007</onup>
+									<ondown>9000</ondown>
+									<onclick>PVR.ToggleRecordPlayingChannel</onclick>
+								</control>
+							</control>
+						</control>
+						<!--fullscreen background-->
+						<control type="image">
+							<left>586</left>
+							<top>0</top>
+							<width>250</width>
+							<height>45</height>
+							<texture colordiffuse="$INFO[Skin.String(color.tertiary)]">backgrounds/white.png</texture>
+						</control>
+						<!--fullscreen button-->
+						<control type="radiobutton" id="607">
+							<colordiffuse>$INFO[Skin.String(color.tertiary)]</colordiffuse>
+							<left>591</left>
+							<top>5</top>
+							<height>35</height>
+							<width>240</width>
+							<textwidth>225</textwidth>
+							<textoffsetx>10</textoffsetx>
+							<textoffsety>8</textoffsety>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>breadcrumb.tertiary</font>
+							<textcolor>$INFO[Skin.String(color.text)]</textcolor>
+							<focusedcolor>white</focusedcolor>
+							<texturefocus colordiffuse="$INFO[Skin.String(color.500)]">backgrounds/white.png</texturefocus>
+							<texturenofocus colordiffuse="$INFO[Skin.String(color.border)]">button-border-fullscreen.png</texturenofocus>
+							<pulseonselect>false</pulseonselect>
+							<label>31008</label>
+							<onclick>fullscreen</onclick>
+							<textureradioonfocus colordiffuse="$INFO[Skin.String(color.tertiary)]">GoFullscreen.png</textureradioonfocus>
+							<textureradioonnofocus colordiffuse="$INFO[Skin.String(color.text)]">GoFullscreen.png</textureradioonnofocus>
+							<textureradioofffocus colordiffuse="$INFO[Skin.String(color.tertiary)]">GoFullscreen.png</textureradioofffocus>
+							<textureradiooffnofocus colordiffuse="$INFO[Skin.String(color.text)]">GoFullscreen.png</textureradiooffnofocus>
+							<onleft>606</onleft>
+							<onright>608</onright>
+							<onup>9007</onup>
+							<ondown>9000</ondown>
+							<enable>Player.HasMedia</enable>
+							<radiowidth>26</radiowidth>
+							<radioheight>26</radioheight>
+							<radioposx>210</radioposx>
+						</control>
+					</control>
+				</control>
+			</control>
+			<!--addon sortcuts-->
+			<control type="group" id="9002">
+				<onup>9901</onup>
+				<ondown>915</ondown>
+				<control type="list" id="700">
+					<animation effect="slide" start="0,0" end="80,0" time="0" condition="String.IsEqual(Container(700).NumItems,4)">conditional</animation>
+					<animation effect="slide" start="0,0" end="160,0" time="0" condition="String.IsEqual(Container(700).NumItems,3)">conditional</animation>
+					<animation effect="slide" start="0,0" end="240,0" time="0" condition="String.IsEqual(Container(700).NumItems,2)">conditional</animation>
+					<animation effect="slide" start="0,0" end="320,0" time="0" condition="String.IsEqual(Container(700).NumItems,1)">conditional</animation>
+					<visible>String.IsEqual(Container(9000).ListItem.Property(defaultID),videos) | String.IsEqual(Container(9000).ListItem.Property(defaultID),movies) | String.IsEqual(Container(9000).ListItem.Property(defaultID),tvshows)</visible>
+					<onleft>700</onleft>
+					<onright>700</onright>
+					<onup>9901</onup>
+					<ondown>20</ondown>
+					<include>HomeAddonsCommonLayout</include>
+					<content>
+						<include>HomeAddonItemsVideos</include>
+					</content>
+				</control>
+				<control type="list" id="703">
+					<animation effect="slide" start="0,0" end="80,0" time="0" condition="String.IsEqual(Container(703).NumItems,4)">conditional</animation>
+					<animation effect="slide" start="0,0" end="160,0" time="0" condition="String.IsEqual(Container(703).NumItems,3)">conditional</animation>
+					<animation effect="slide" start="0,0" end="240,0" time="0" condition="String.IsEqual(Container(703).NumItems,2)">conditional</animation>
+					<animation effect="slide" start="0,0" end="320,0" time="0" condition="String.IsEqual(Container(703).NumItems,1)">conditional</animation>
+					<visible>String.IsEqual(Container(9000).ListItem.Property(defaultID),music)</visible>
+					<onleft>703</onleft>
+					<onright>703</onright>
+					<onup>9901</onup>
+					<ondown>20</ondown>
+					<include>HomeAddonsCommonLayout</include>
+					<content>
+						<include>HomeAddonItemsMusic</include>
+					</content>
+				</control>
+				<control type="list" id="704">
+					<animation effect="slide" start="0,0" end="80,0" time="0" condition="String.IsEqual(Container(704).NumItems,4)">conditional</animation>
+					<animation effect="slide" start="0,0" end="160,0" time="0" condition="String.IsEqual(Container(704).NumItems,3)">conditional</animation>
+					<animation effect="slide" start="0,0" end="240,0" time="0" condition="String.IsEqual(Container(704).NumItems,2)">conditional</animation>
+					<animation effect="slide" start="0,0" end="320,0" time="0" condition="String.IsEqual(Container(704).NumItems,1)">conditional</animation>
+					<visible>String.IsEqual(Container(9000).ListItem.Property(defaultID),pictures)</visible>
+					<onleft>704</onleft>
+					<onright>704</onright>
+					<onup>9901</onup>
+					<ondown>20</ondown>
+					<include>HomeAddonsCommonLayout</include>
+					<content>
+						<include>HomeAddonItemsPictures</include>
+					</content>
+				</control>
+				<control type="list" id="705">
+					<animation effect="slide" start="0,0" end="80,0" time="0" condition="String.IsEqual(Container(705).NumItems,4)">conditional</animation>
+					<animation effect="slide" start="0,0" end="160,0" time="0" condition="String.IsEqual(Container(705).NumItems,3)">conditional</animation>
+					<animation effect="slide" start="0,0" end="240,0" time="0" condition="String.IsEqual(Container(705).NumItems,2)">conditional</animation>
+					<animation effect="slide" start="0,0" end="320,0" time="0" condition="String.IsEqual(Container(705).NumItems,1)">conditional</animation>
+					<visible>String.IsEqual(Container(9000).ListItem.Property(defaultID),programs)</visible>
+					<onleft>705</onleft>
+					<onright>705</onright>
+					<onup>9901</onup>
+					<ondown>20</ondown>
+					<include>HomeAddonsCommonLayout</include>
+					<content>
+						<include>HomeAddonItemsPrograms</include>
+					</content>
+				</control>
+			</control>
+		</control>
+		<control type="group">
+			<left>60</left>
+			<right>60</right>
+			<top>54r</top>
+			<!--rss feed-->
+			<control type="group">
+				<visible>system.getbool(lookandfeel.enablerssfeeds)</visible>
+				<include>Window_OpenClose_Animation</include>
+				<!--rss background-->
+				<control type="image">
+					<width>100%</width>
+					<height>34</height>
+					<texture colordiffuse="$INFO[Skin.String(color.tertiary)]">backgrounds/white.png</texture>
+				</control>
+				<!--rss background strip-->
+				<control type="image">
+					<right>0</right>
+					<width>4</width>
+					<height>34</height>
+					<texture colordiffuse="$INFO[Skin.String(color.500)]">backgrounds/white.png</texture>
+				</control>
+				<!--rss feed-->
+				<control type="rss">
+					<centerleft>50%</centerleft>
+					<top>2</top>
+					<height>34</height>
+					<width>99%</width>
+					<font>breadcrumb.secondary</font>
+					<urlset>1</urlset>
+					<textcolor>$INFO[Skin.String(color.500)]</textcolor>
+					<titlecolor>$INFO[Skin.String(color.500)]</titlecolor>
+					<headlinecolor>$INFO[Skin.String(color.text)]</headlinecolor>
+				</control>
+			</control>
+		</control>
+
+		<!--AnBox-->
+		<control type="button" id="9000">
+		      <description>AnBox</description>
+		      <left>50</left>
+		      <top>30</top>
+		      <width>20%</width>
+		      <height>15%</height>
+		      <visible>true</visible>
+		        <texturefocus>buttons/Anbox1.png</texturefocus>
+		      <texturenofocus>buttons/Anbox.png</texturenofocus>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="110,110" center="auto" time="200"/>
+			  </animation>
+		      <onclick>ActivateWindow(1198)</onclick>
+		      <onup>9015</onup>
+		      <ondown>9100</ondown>
+		      <onleft>9015</onleft>
+		      <onright>9100</onright>
+		</control>
+
+		<!--Fav n°1-->
+		<control type="button" id="9100">
+		      <description>Favoris 1</description>
+		      <left>25%</left>
+		      <top>20%</top>
+		      <width>20%</width>
+		      <height>30%</height>
+		      <visible>true</visible>
+			  <texturefocus>backgrounds/white.png</texturefocus>
+		      <texturenofocus>backgrounds/white.png</texturenofocus>
+			  <label>Favoris 1</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF000000</textcolor>
+		      <focusedcolor>FF000000</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		     <!--<texture>$INFO[ListItem.Icon]</texture>-->
+		     <onclick>RunAddon($INFO[Skin.String(HomeVideosButton1)])</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="105,105" center="auto" time="200"/>
+			  </animation>
+		      <onup>9000</onup>
+		      <ondown>8001</ondown>
+		      <onleft>9015</onleft>
+		      <onright>9002</onright>
+		</control>
+
+		<!--Fav n°2-->
+		<control type="button" id="9002">
+		      <description>Favoris 2</description>
+		      <right>25%</right>
+		      <top>20%</top>
+		      <width>20%</width>
+		      <height>30%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus>backgrounds/white.png</texturefocus>
+		      <texturenofocus>backgrounds/white.png</texturenofocus>
+		      <label>Favoris 2</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF000000</textcolor>
+		      <focusedcolor>FF000000</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="105,105" center="auto" time="200"/>
+			  </animation>
+			  <onclick>RunAddon($INFO[Skin.String(HomeVideosButton2)])</onclick>
+		      <onup>9000</onup>
+		      <ondown>8001</ondown>
+		      <onleft>9100</onleft>
+		      <onright>9016</onright>
+		</control>
+		
+		<!--ADDON-->
+		<control type="grouplist" id="8001">
+		<onup>9100</onup>
+		<ondown>9100</ondown>
+		 <left>18%</left>
+		 <top>50%</top>
+						<include content="WidgetListSquare">
+							<param name="content_path" value="addons://sources/video/"/>
+							<param name="widget_target" value="videos"/>
+							<param name="sortby" value="lastused"/>
+							<param name="sortorder" value="descending"/>
+							<param name="list_id" value="8100"/>
+							<param name="fallback_icon" value="DefaultAddon.png"/>
+						</include>
+						<include content="WidgetListSquare">
+							<param name="content_path" value="addons://sources/audio/"/>
+							<param name="widget_target" value="music"/>
+							<param name="sortby" value="lastused"/>
+							<param name="sortorder" value="descending"/>
+							<param name="list_id" value="8200"/>
+							<param name="fallback_icon" value="DefaultAddon.png"/>
+						</include>
+						<include content="WidgetListSquare">
+							<param name="content_path" value="addons://sources/game/"/>
+							<param name="widget_target" value="games"/>
+							<param name="sortby" value="lastused"/>
+							<param name="sortorder" value="descending"/>
+							<param name="list_id" value="8700"/>
+							<param name="fallback_icon" value="DefaultAddonGame.png"/>
+							<param name="visible" value="System.GetBool(gamesgeneral.enable)"/>
+						</include>
+						<include content="WidgetListSquare" condition="System.Platform.Android">
+							<param name="content_path" value="androidapp://sources/apps/"/>
+							<param name="widget_target" value="programs"/>
+							<param name="sortby" value="lastused"/>
+							<param name="sortorder" value="descending"/>
+							<param name="list_id" value="8400"/>
+							<param name="fallback_icon" value="DefaultAddon.png"/>
+						</include>
+					</control>
+		
+		
+		<!--App n°1
+		<control type="button" id="9003">
+		      <description>App 1</description>
+		      <left>15%</left>
+		      <top>55%</top>
+		      <width>7%</width>
+		      <height>10%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturefocus>
+		      <texturenofocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturenofocus>
+		      <label>App1</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF6666666</textcolor>
+		      <focusedcolor>FF666666</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(Settings)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="110,110" center="auto" time="200"/>
+			  </animation>
+		      <onup>9100</onup>
+		      <ondown>9007</ondown>
+		      <onleft>9015</onleft>
+		      <onright>9004</onright>
+		</control>
+		<!--App n°2
+		<control type="button" id="9004">
+		      <description>App 2</description>
+		      <left>35%</left>
+		      <top>55%</top>
+		      <width>7%</width>
+		      <height>10%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturefocus>
+		      <texturenofocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturenofocus>
+		      <label>App2</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <focusedcolor>FF666666</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(Settings)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="110,110" center="auto" time="200"/>
+			  </animation>
+		      <onup>9100</onup>
+		      <ondown>9008</ondown>
+		      <onleft>9003</onleft>
+		      <onright>9005</onright>
+		</control>
+		<!--App n°3
+		<control type="button" id="9005">
+		      <description>App 3</description>
+		      <right>35%</right>
+		      <top>55%</top>
+		      <width>7%</width>
+		      <height>10%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturefocus>
+		      <texturenofocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturenofocus>
+		      <label>App3</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF6666666</textcolor>
+		      <focusedcolor>FF666666</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(Settings)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="110,110" center="auto" time="200"/>
+			  </animation>
+		      <onup>9002</onup>
+		      <ondown>9009</ondown>
+		      <onleft>9004</onleft>
+		      <onright>9006</onright>
+		</control>
+		<!--App n°4
+		<control type="button" id="9006">
+		      <description>App 4</description>
+		      <right>15%</right>
+		      <top>55%</top>
+		      <width>7%</width>
+		      <height>10%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturefocus>
+		      <texturenofocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturenofocus>
+		      <label>App4</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF6666666</textcolor>
+		      <focusedcolor>FF666666</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(Settings)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="110,110" center="auto" time="200"/>
+			  </animation>
+		      <onup>9002</onup>
+		      <ondown>9010</ondown>
+		      <onleft>9005</onleft>
+		      <onright>9016</onright>
+		</control>
+		<!--App n°6
+		<control type="button" id="9007">
+		      <description>App 6</description>
+		      <left>15%</left>
+		      <top>70%</top>
+		      <width>7%</width>
+		      <height>10%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturefocus>
+		      <texturenofocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturenofocus>
+		      <label>App6</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF6666666</textcolor>
+		      <focusedcolor>FF666666</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(Settings)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="110,110" center="auto" time="200"/>
+			  </animation>
+		      <onup>9003</onup>
+		      <ondown>9011</ondown>
+		      <onleft>9015</onleft>
+		      <onright>9008</onright>
+		</control>
+		<!--App n°7
+		<control type="button" id="9008">
+		      <description>App 7</description>
+		     <left>35%</left>
+		      <top>70%</top>
+		      <width>7%</width>
+		      <height>10%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturefocus>
+		      <texturenofocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturenofocus>
+		      <label>App7</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF6666666</textcolor>
+		      <focusedcolor>FF666666</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(Settings)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="110,110" center="auto" time="200"/>
+			  </animation>
+		      <onup>9004</onup>
+		      <ondown>9012</ondown>
+		      <onleft>9007</onleft>
+		      <onright>9009</onright>
+		</control>
+		<!--App n°8
+		<control type="button" id="9009">
+		      <description>App 8</description>
+		      <right>35%</right>
+		      <top>70%</top>
+		      <width>7%</width>
+		      <height>10%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturefocus>
+		      <texturenofocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturenofocus>
+		      <label>App8</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF6666666</textcolor>
+		      <focusedcolor>FF666666</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(Settings)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="110,110" center="auto" time="200"/>
+			  </animation>
+		      <onup>9005</onup>
+		      <ondown>9013</ondown>
+		      <onleft>9008</onleft>
+		      <onright>9010</onright>
+		</control>
+		<!--App n°9
+		<control type="button" id="9010">
+		      <description>App 9</description>
+		     <right>15%</right>
+		      <top>70%</top>
+		      <width>7%</width>
+		      <height>10%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturefocus>
+		      <texturenofocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturenofocus>
+		      <label>App9</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF6666666</textcolor>
+		      <focusedcolor>FF666666</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(Settings)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="110,110" center="auto" time="200"/>
+			  </animation>
+		      <onup>9006</onup>
+		      <ondown>9014</ondown>
+		      <onleft>9009</onleft>
+		      <onright>9016</onright>
+		</control>
+		<!--App n°11
+		<control type="button" id="9011">
+		      <description>App 11</description>
+		      <left>15%</left>
+		      <top>85%</top>
+		      <width>7%</width>
+		      <height>10%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturefocus>
+		      <texturenofocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturenofocus>
+		      <label>App11</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF6666666</textcolor>
+		      <focusedcolor>FF666666</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(Settings)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="110,110" center="auto" time="200"/>
+			  </animation>
+		      <onup>9007</onup>
+		      <ondown></ondown>
+		      <onleft>9015</onleft>
+		      <onright>9012</onright>
+		</control>
+		<!--App n°12
+		<control type="button" id="9012">
+		      <description>App 12</description>
+		      <left>35%</left>
+		      <top>85%</top>
+		      <width>7%</width>
+		      <height>10%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturefocus>
+		      <texturenofocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturenofocus>
+		      <label>App12</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF6666666</textcolor>
+		      <focusedcolor>FF666666</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(Settings)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="110,110" center="auto" time="200"/>
+			  </animation>
+		      <onup>9008</onup>
+		      <ondown></ondown>
+		      <onleft>9011</onleft>
+		      <onright>9013</onright>
+		</control>
+		<!--App n°13
+		<control type="button" id="9013">
+		      <description>App 13</description>
+		      <right>35%</right>
+		      <top>85%</top>
+		      <width>7%</width>
+		      <height>10%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturefocus>
+		      <texturenofocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturenofocus>
+		      <label>App13</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF6666666</textcolor>
+		      <focusedcolor>FF666666</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(Settings)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="110,110" center="auto" time="200"/>
+			  </animation>
+		      <onup>9009</onup>
+		      <ondown></ondown>
+		      <onleft>9012</onleft>
+		      <onright>9014</onright>
+		</control>
+		<!--App n°14
+		<control type="button" id="9014">
+		      <description>App 14</description>
+		      <right>15%</right>
+		      <top>85%</top>
+		      <width>7%</width>
+		      <height>10%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturefocus>
+		      <texturenofocus colordiffuse="FFFFFFFF">backgrounds/white.png</texturenofocus>
+		      <label>App14</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF6666666</textcolor>
+		      <focusedcolor>FF666666</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(Settings)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="110,110" center="auto" time="200"/>
+			  </animation>
+		      <onup>9010</onup>
+		      <ondown></ondown>
+		      <onleft>9013</onleft>
+		      <onright>9016</onright>
+		</control>-->
+
+		<!-- App +/- -->
+		<control type="button" id="9015">
+		      <description>App+/-</description>
+		      <left>80</left>
+		      <top>750</top>
+		      <width>5%</width>
+		      <height>10%</height>
+		      <visible>true</visible>
+		      <wrapmultiline>true</wrapmultiline>
+		       <texturefocus>buttons/addons1.png</texturefocus>
+		      <texturenofocus>buttons/addons.png</texturenofocus>
+		      <onclick>ActivateWindow(addonbrowser,addons://search/)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="110,110" center="auto" time="200"/>
+			  </animation>
+		      <onup>9100</onup>
+		      <ondown>9000</ondown>
+		      <onleft>9016</onleft>
+		      <onright>8001</onright>
+		</control>
+
+		<!-- Fichiers -->
+		<control type="button" id="9016">
+		      <description>Fichiers</description>
+		      <right>80</right>
+		      <top>750</top>
+		      <width>120</width>
+		      <height>125</height>
+		      <visible>true</visible>
+		      <wrapmultiline>true</wrapmultiline>
+		       <texturefocus>buttons/filemanager1.png</texturefocus>
+		      <texturenofocus>buttons/filemanager.png</texturenofocus>
+		      <onclick>ActivateWindow(filemanager)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="110,110" center="auto" time="200"/>
+			  </animation>
+		      <onup>9002</onup>
+		      <ondown>9000</ondown>
+		      <onleft>8001</onleft>
+		      <onright>9015</onright>
+		</control>
+
+		<!--weather info-->
+		<control type="group">
+			<left>820</left>
+			<top>30</top>
+			<visible>true</visible>
+			<include>Window_OpenClose_Animation</include>
+			<!--breadcrumb bg-->
+			<!--control type="image">
+				<left>4</left>
+				<top>0</top>
+				<width>400</width>
+				<height>50</height>
+				<texture colordiffuse="$INFO[Skin.String(color.tertiary)]">backgrounds/white.png</texture>
+			</control-->
+			<!--breadcrumb strip-->
+			<!--control type="image">
+				<left>0</left>
+				<top>0</top>
+				<width>4</width>
+				<height>50</height>
+				<texture colordiffuse="$INFO[Skin.String(color.500)]">backgrounds/white.png</texture>
+			</control-->
+			<control type="image">
+				<description>Weather image</description>
+				<left>5%</left>
+				<top>0</top>
+				<width>50</width>
+				<height>50</height>
+				<aspectratio>keep</aspectratio>
+				<texture>$INFO[Window(Weather).Property(Current.ConditionIcon)]</texture>
+			</control>
+			<control type="label">
+				<description>Location label</description>
+				<left>110</left>
+				<top>12</top>
+				<width>150</width>
+				<height>25</height>
+				<align>left</align>
+				<aligny>center</aligny>
+				<font>font12</font>
+				<textcolor>FFFFFFFF</textcolor>
+				<label>$INFO[Window(Weather).Property(Location)]</label>
+			</control>
+			<control type="grouplist">
+				<left>-10</left>
+				<top>10</top>
+				<width>375</width>
+				<height>25</height>
+				<orientation>horizontal</orientation>
+				<align>left</align>
+				<itemgap>0</itemgap>
+				<control type="label">
+					<description>Temp label</description>
+					<width min="0" max="300">auto</width>
+					<height>25</height>
+					<align>left</align>
+					<aligny>center</aligny>
+					<font>font12_title</font>
+					<textcolor>FFFFFFFF</textcolor>
+					<label>$INFO[Window(Weather).Property(Current.Temperature)]</label>
+				</control>
+				<control type="label">
+					<description>Temp Units</description>
+					<width min="0" max="150">auto</width>
+					<height>25</height>
+					<font>font12</font>
+					<aligny>center</aligny>
+					<label>$INFO[System.TemperatureUnits]</label>
+					<textcolor>FFFFFFFF</textcolor>
+					<visible>!String.IsEmpty(Window(Weather).Property(Current.Temperature))</visible>
+				</control>
+			</control>
+		</control>
+		<!--dialog fade-->
+		<include>BehindDialogFadeOut</include>
+	</controls>
+</window>

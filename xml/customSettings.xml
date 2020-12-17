@@ -1,0 +1,258 @@
+<window id="1198">
+  <defaultcontrol always="true">1</defaultcontrol>
+  <controls>
+  	<include>CommonBackground</include>
+	<include>Clock</include>
+	<control type="label">
+		<description>Paramètres</description>
+		<right>40%</right>
+		<top>30%</top>
+		<width>20%</width>
+		<height>50</height>
+		<align>center</align>
+		<aligny>center</aligny>
+		<font>font16</font>
+		<textcolor>FFFFFFFF</textcolor>
+		<label>Paramètres</label>
+	</control>
+		<!--Wifi & Réseaux-->
+		<control type="button" id="1">
+			<animation type="WindowOpen">
+				 <effect type="fade" start="0" end="100" time="500"/>
+			</animation>
+		      <description>Wifi & Réseaux</description>
+		      <left>2%</left>
+		      <top>45%</top>
+		      <width>10%</width>
+		      <height>5%</height>
+		      <visible>true</visible>
+		      <texturefocus>backgrounds/white.png</texturefocus>
+		      <texturenofocus>backgrounds/white.png</texturenofocus>
+		      <label>Wifi & Réseaux</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF000000</textcolor>
+		      <focusedcolor>FF000000</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(1190)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="105,105" center="auto" time="200"/>
+			  </animation>
+		      <onup></onup>
+		      <ondown></ondown>
+		      <onleft>8</onleft>
+		      <onright>2</onright>
+		</control>
+		<!--Langues-->
+		<control type="button" id="2">
+			<animation type="WindowOpen">
+				 <effect type="fade" start="0" end="100" time="600"/>
+			</animation>
+		      <description>Langue</description>
+		      <left>14%</left>
+		      <top>45%</top>
+		      <width>10%</width>
+		      <height>5%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus>backgrounds/white.png</texturefocus>
+		      <texturenofocus>backgrounds/white.png</texturenofocus>
+		      <label>Langue</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF000000</textcolor>
+		      <focusedcolor>FF000000</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(interfacesettings)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="105,105" center="auto" time="200"/>
+			  </animation>
+		      <onup></onup>
+		      <ondown></ondown>
+		      <onleft>1</onleft>
+		      <onright>3</onright>
+		</control>
+		<!--Ville & Météo-->
+		<control type="button" id="3">
+			<animation type="WindowOpen">
+				 <effect type="fade" start="0" end="100" time="700"/>
+			</animation>
+		      <description>Météo</description>
+		      <left>26%</left>
+		      <top>45%</top>
+		      <width>10%</width>
+		      <height>5%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus>backgrounds/white.png</texturefocus>
+		      <texturenofocus>backgrounds/white.png</texturenofocus>
+		      <label>Ville & Météo</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		     <textcolor>FF000000</textcolor>
+		      <focusedcolor>FF000000</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(servicesettings)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="105,105" center="auto" time="200"/>
+			  </animation>
+		      <onup></onup>
+		      <ondown></ondown>
+		      <onleft>2</onleft>
+		      <onright>4</onright>
+		</control>
+		<!--Date & Heure-->
+		<control type="button" id="4">
+			<animation type="WindowOpen">
+				 <effect type="fade" start="0" end="100" time="800"/>
+			</animation>
+		      <description>Date & Heure</description>
+		      <left>38%</left>
+		      <top>45%</top>
+		      <width>10%</width>
+		      <height>5%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus>backgrounds/white.png</texturefocus>
+		      <texturenofocus>backgrounds/white.png</texturenofocus>
+		      <label>Date & Heure</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF000000</textcolor>
+		      <focusedcolor>FF000000</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(systeminfo)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="105,105" center="auto" time="200"/>
+			  </animation>
+		      <onup></onup>
+		      <ondown></ondown>
+		      <onleft>3</onleft>
+		      <onright>5</onright>
+		</control>
+		<!--Paramètres Complets-->
+		<control type="button" id="5">
+			<animation type="WindowOpen">
+				 <effect type="fade" start="0" end="100" time="900"/>
+			</animation>
+		      <description>Ecran de veille</description>
+		      <left>50%</left>
+		      <top>45%</top>
+		      <width>10%</width>
+		      <height>5%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus>backgrounds/white.png</texturefocus>
+		      <texturenofocus>backgrounds/white.png</texturenofocus>
+		      <label>Ecran de veille</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF000000</textcolor>
+		      <focusedcolor>FF000000</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(Settings)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="105,105" center="auto" time="200"/>
+			  </animation>
+		      <onup></onup>
+		      <ondown></ondown>
+		      <onleft>4</onleft>
+		      <onright>6</onright>
+		</control>
+		<!--Favoris-->
+		<control type="button" id="6">
+			<animation type="WindowOpen">
+				 <effect type="fade" start="0" end="100" time="1000"/>
+			</animation>
+		      <description>Favoris</description>
+		      <left>62%</left>
+		      <top>45%</top>
+		      <width>10%</width>
+		      <height>5%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus>backgrounds/white.png</texturefocus>
+		      <texturenofocus>backgrounds/white.png</texturenofocus>
+		      <label>Favoris</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF000000</textcolor>
+		      <focusedcolor>FF000000</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(1190)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="105,105" center="auto" time="200"/>
+			  </animation>
+		      <onup></onup>
+		      <ondown></ondown>
+		      <onleft>5</onleft>
+		      <onright>7</onright>
+		</control>
+		<!--télécommande-->
+		<control type="button" id="7">
+			<animation type="WindowOpen">
+				 <effect type="fade" start="0" end="100" time="1100"/>
+			</animation>
+		      <description>Télécommande</description>
+		      <left>74%</left>
+		      <top>45%</top>
+		      <width>10%</width>
+		      <height>5%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus>backgrounds/white.png</texturefocus>
+		      <texturenofocus>backgrounds/white.png</texturenofocus>
+		      <label>Télécommande</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		      <textcolor>FF000000</textcolor>
+		      <focusedcolor>FF000000</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(1190)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="105,105" center="auto" time="200"/>
+			  </animation>
+		      <onup></onup>
+		      <ondown></ondown>
+		      <onleft>6</onleft>
+		      <onright>8</onright>
+		</control>
+		<!--écran de veille-->
+		<control type="button" id="8">
+			<animation type="WindowOpen">
+				 <effect type="fade" start="0" end="100" time="1200"/>
+			</animation>
+		      <description>Paramètres Complets</description>
+		      <left>86%</left>
+		      <top>45%</top>
+		      <width>10%</width>
+		      <height>5%</height>
+		      <visible>true</visible>
+		      <colordiffuse>FFFFFFFF</colordiffuse>
+		      <texturefocus>backgrounds/white.png</texturefocus>
+		      <texturenofocus>backgrounds/white.png</texturenofocus>
+		      <label>Paramètres Complets</label>
+		      <wrapmultiline>true</wrapmultiline>
+		      <font>font12</font>
+		     <textcolor>FF000000</textcolor>
+		      <focusedcolor>FF000000</focusedcolor>
+		      <align>center</align>
+		      <aligny>center</aligny>
+		      <onclick>ActivateWindow(1190)</onclick>
+		      <animation type="Focus">
+ 				<effect type="zoom" end="105,105" center="auto" time="200"/>
+			  </animation>
+		      <onup></onup>
+		      <ondown></ondown>
+		      <onleft>7</onleft>
+		      <onright>1</onright>
+		</control>
+  </controls>
+</window>
